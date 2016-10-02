@@ -16,15 +16,22 @@ public:
     void clear();
     void setCursor(uint8_t col, uint8_t row);
     void home();
+    void cursor();
+    void noCursor();
+    void blink();
+    void noBlink();
 
     size_t write(uint8_t b) override;
     using Print::write;
 
 private:
 
+    void updateCursor();
     void writeCommand(const char* command);
 
     WriteFunc writeToDevice_;
+    bool showCursor_;
+    bool blink_;
 };
 
 #endif
