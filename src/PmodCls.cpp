@@ -33,6 +33,11 @@ void PmodCls::setCursor(uint8_t col, uint8_t row)
     }
 }
 
+void PmodCls::home()
+{
+    setCursor(0, 0);
+}
+
 size_t PmodCls::write(uint8_t b)
 {
     writeToDevice_(b);

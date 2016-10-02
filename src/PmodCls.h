@@ -15,6 +15,7 @@ public:
 
     void clear();
     void setCursor(uint8_t col, uint8_t row);
+    void home();
 
     size_t write(uint8_t b) override;
     using Print::write;
