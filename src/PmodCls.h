@@ -20,6 +20,10 @@ public:
     void noCursor();
     void blink();
     void noBlink();
+    void scrollDisplay(int numCols);
+    void scrollDisplayLeft(unsigned numCols = 1);
+    void scrollDisplayRight(unsigned numCols = 1);
+
 
     size_t write(uint8_t b) override;
     using Print::write;

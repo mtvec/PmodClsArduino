@@ -63,6 +63,34 @@ void PmodCls::noBlink()
     updateCursor();
 }
 
+void PmodCls::scrollDisplay(int numCols)
+{
+    if (numCols < Constants::NumCols && numCols > -Constants::NumCols)
+    {
+        char code = 'A';
+
+        if (numCols < 0)
+        {
+            code = '@';
+            numCols = -numCols;
+        }
+
+        char command[4];
+        sprintf(command, "%u%c", numCols, code);
+        writeCommand(command);
+    }
+}
+
+void PmodCls::scrollDisplayLeft(unsigned numCols)
+{
+    scrollDisplay(-numCols);
+}
+
+void PmodCls::scrollDisplayRight(unsigned numCols)
+{
+    scrollDisplay(numCols);
+}
+
 size_t PmodCls::write(uint8_t b)
 {
     writeToDevice_(b);
