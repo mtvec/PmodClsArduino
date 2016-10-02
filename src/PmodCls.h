@@ -14,6 +14,7 @@ public:
     void begin(uint8_t cols = 0, uint8_t rows = 0, uint8_t charsize = 0);
 
     void clear();
+    void setCursor(uint8_t col, uint8_t row);
 
     size_t write(uint8_t b) override;
     using Print::write;
