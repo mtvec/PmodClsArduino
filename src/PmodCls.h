@@ -20,6 +20,8 @@ public:
     void noCursor();
     void blink();
     void noBlink();
+    void display();
+    void noDisplay();
     void scrollDisplay(int numCols);
     void scrollDisplayLeft(unsigned numCols = 1);
     void scrollDisplayRight(unsigned numCols = 1);
@@ -31,6 +33,7 @@ public:
 private:
 
     void updateCursor();
+    void enableDisplay(bool on);
     void writeCommand(const char* command);
 
     WriteFunc writeToDevice_;

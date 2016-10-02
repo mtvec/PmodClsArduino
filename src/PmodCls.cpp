@@ -63,6 +63,21 @@ void PmodCls::noBlink()
     updateCursor();
 }
 
+void PmodCls::display()
+{
+    enableDisplay(true);
+
+    // For some reason, the PmodCLS enables the cursor when enabling the
+    // display. To prevent this from happening when the cursor was disabled, we
+    // update it here.
+    updateCursor();
+}
+
+void PmodCls::noDisplay()
+{
+    enableDisplay(false);
+}
+
 void PmodCls::scrollDisplay(int numCols)
 {
     if (numCols < Constants::NumCols && numCols > -Constants::NumCols)
@@ -106,6 +121,13 @@ void PmodCls::updateCursor()
 
     char command[3];
     sprintf(command, "%uc", cursorMode);
+    writeCommand(command);
+}
+
+void PmodCls::enableDisplay(bool on)
+{
+    char command[3];
+    sprintf(command, "%ue", on ? 3 : 0);
     writeCommand(command);
 }
 
